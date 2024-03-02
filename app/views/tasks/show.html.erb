@@ -1,0 +1,40 @@
+<p id="notice" style="color: red; font-size: 18px;"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @category.description %>
+</p>
+
+<h2>Tasks</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td>
+          <%= link_to 'Show', category_task_path(@category, task) %>
+          <%= link_to 'Edit', edit_category_task_path(@category, task) %>
+          <%= button_to 'Destroy', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Task', new_category_task_path(@category) %>
+
+<%= link_to 'Edit Category', edit_category_path(@category) %> |
+<%= link_to 'Back to Categories', categories_path %>

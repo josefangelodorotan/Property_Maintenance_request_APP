@@ -1,0 +1,33 @@
+ <h1>Property Maintenance Job request</h1>
+
+<%= link_to 'New Category', new_category_path, class: 'new_category' %>
+
+
+<table class="table-container">
+  <thead>
+    <tr> 
+      <th scope="col">Apartment</th>
+      <th scope="col">Description</th>
+      <th scope="col">Maintenance Job request</th>
+    </tr>
+  </thead>
+
+ <tbody class="table-group-divider">
+      <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.description %></td>
+
+ 
+
+<td class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <%= link_to 'Show', category, class: 'btn btn-danger' %>
+  <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-warning' %>
+  <%= button_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-success' %>
+</td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
