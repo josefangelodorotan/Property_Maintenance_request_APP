@@ -11,33 +11,45 @@
   <%= @category.description %>
 </p>
 
-<h2>Tasks</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Description Request</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @category.tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.description %></td>
-        <td>
-          <%= link_to 'Show', category_task_path(@category, task) %> |
-          <%= link_to 'Edit', edit_category_task_path(@category, task) %> |
-          <%= button_to 'Destroy', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Tasks</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @category.tasks.each do |task| %>
+            <tr>
+              <td><%= task.title %></td>
+              <td><%= task.description %></td>
+              <td>
+                <%= link_to 'Show', category_task_path(@category, task), class: 'btn btn-info btn-sm' %>
+                <%= link_to 'Edit', edit_category_task_path(@category, task), class: 'btn btn-warning btn-sm' %>
+                <%= button_to 'Destroy', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-      </tr>
-    <% end %>
-    <%= link_to 'New Task', new_category_task_path(@category) %>
+  <div class="row">
+    <div class="col">
+      <%= link_to 'New Task', new_category_task_path(@category), class: 'btn btn-primary' %>
+    </div>
+  </div>
 
-  </tbody>
-</table>
-
-<%= link_to 'Edit Category', edit_category_path(@category) %> |
-<%= link_to 'Back to Categories', categories_path %>
-
+  <div class="row">
+    <div class="col text-center">
+      <%= link_to 'Edit Category', edit_category_path(@category), class: 'btn btn-secondary' %> |
+      <%= link_to 'Back to Categories', categories_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

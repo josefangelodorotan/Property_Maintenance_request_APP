@@ -1,6 +1,6 @@
-<%= form_with(model: [ @category, @task ], local: true) do |form| %>
+<%= form_with(model: [@category, @task], local: true) do |form| %>
   <% if @task.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :task_title %>
+    <%= form.text_field :title, id: :task_title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :task_description %>
+    <%= form.text_area :description, id: :task_description, class: "form-control" %>
   </div>
 
   <!-- If you have additional fields specific to tasks, add them here -->
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save Task", class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,33 +1,46 @@
- <h1>Property Maintenance Job request</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
 
-<%= link_to 'New Category', new_category_path, class: 'new_category' %>
+<div class="container mt-5">
+  <h1 class="mb-4">Property Maintenance Job Requests</h1>
+  <%= link_to 'New Apartment + ', new_category_path, class: 'btn btn-primary mb-4' %>
 
-
-<table class="table-container">
-  <thead>
-    <tr> 
-      <th scope="col">Apartment</th>
-      <th scope="col">Description</th>
-      <th scope="col">Maintenance Job request</th>
-    </tr>
-  </thead>
-
- <tbody class="table-group-divider">
-      <% @categories.each do |category| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= category.name %></td>
-        <td><%= category.description %></td>
-
- 
-
-<td class="btn-group" role="group" aria-label="Basic mixed styles example">
-  <%= link_to 'Show', category, class: 'btn btn-danger' %>
-  <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-warning' %>
-  <%= button_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-success' %>
-</td>
-
+        <th scope="col">Apartment</th>
+        <th scope="col">Description</th>
+        <th scope="col">Maintenance Job Request</th>
+        <th scope="col">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.description %></td>
+          <td><%= link_to 'Show', category, class: 'btn btn-success mr-1' %>
+ </td>
+          <td class="btn-group" role="group" aria-label="Basic mixed styles example">
+         
+            <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-warning mr-1' %>
+            <%= button_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-1' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
+
+<%# 'btn btn-success mr-1' - success
+'btn btn-danger mr-1' - danger %>

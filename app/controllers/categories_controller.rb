@@ -1,7 +1,16 @@
 class CategoriesController < ApplicationController
+  #kakalagay ko to
+  before_action :authenticate_user!
+
+
+  # def index
+  #   @categories = Category.all
+  # end
+
   def index
-    @categories = Category.all
+    @categories = current_user.categories
   end
+
 
   def show
     @category = Category.find(params[:id])
@@ -37,6 +46,18 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     redirect_to categories_path
+  end
+
+
+  def create
+    @category = current_user.categories.build(category_params)
+    if @category.save
+      # Redirect to the categories index with a success message
+      redirect_to categories_path, notice: 'Category was successfully created.'
+    else
+      # Render the 'new' form again so the user can fix problems
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

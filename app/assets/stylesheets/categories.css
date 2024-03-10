@@ -1,6 +1,6 @@
-/* app/assets/stylesheets/categories.scss */
+/* app/assets/stylesheets/categories.scss */ 
 
-h1 {
+* h1 {
     color: #333;
     text-align: center;
   }

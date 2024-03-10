@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Property Management Maintenance Application</title>
+  <style>
+    body {
+      background-color: #grey;
+      display: flex;
+      justify-content: center;
+      align-items: top;
+      height: 100vh;
+      margin-top: 200px;
+    }
+    .container {
+      text-align: center;
+    }
+
+    h1{
+      color: gray;
+      font-size: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Property Management Maintenance Application</h1><br><br><br><br>
+    <p>Please sign in or register to get started:</p><br>
+    <p>
+      <%= link_to 'Sign In', new_user_session_path %> |
+      <%= link_to 'Register', new_user_registration_path %>
+    </p>
+  </div>
+</body>
+</html>

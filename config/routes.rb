@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  devise_for :users
 
   resources :categories do
     resources :tasks
+  end
+
+  #ito dinagdag ko
+  authenticated :user do
+    root to: 'categories#index', as: :authenticated_root
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,5 +19,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "categories#index"
+  get '/categories/', to: 'categories#index'
+  root 'home#index'
+
 end
