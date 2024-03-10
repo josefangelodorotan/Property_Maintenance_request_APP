@@ -47,3 +47,6 @@
   }
   
 
+  .completed-task td {
+    text-decoration: line-through;
+  }

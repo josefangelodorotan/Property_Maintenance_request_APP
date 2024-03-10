@@ -23,7 +23,21 @@
 
   <!-- If you have additional fields specific to tasks, add them here -->
 
+
+
+<div class="form-group">
+  <%= form.label :schedule_date %>
+  <%# ito ang original %>
+  <%# <%= form.date_field :schedule_date, id: :task_schedule_date, class: 'form-control' %> 
+<%# pinalitan ko nito %>
+<%= form.date_field :schedule_date, class: 'form-control' %>
+
+</div>
+
   <div class="actions">
     <%= form.submit "Save Task", class: "btn btn-primary" %>
   </div>
+
+  
+
 <% end %>

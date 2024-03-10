@@ -9,7 +9,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories
+    @todays_tasks = Task.where(schedule_date: Date.today)
   end
+
 
 
   def show

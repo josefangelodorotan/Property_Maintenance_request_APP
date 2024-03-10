@@ -44,7 +44,14 @@ class TasksController < ApplicationController
     @task = @category.tasks.find(params[:id])
   end
 
+  # def task_params
+  #   params.require(:task).permit(:title, :description, :category_id)
+  # end
+
   def task_params
-    params.require(:task).permit(:title, :description, :category_id)
+    params.require(:task).permit(:title, :description, :schedule_date, :completed, :category_id)
   end
+
+
+
 end
